@@ -1,0 +1,38 @@
+S -> if cond : NEWLINE INDENT S 
+S -> if cond : NEWLINE S INDENT NEWLINE  else : NEWLINE INDENT S 
+S -> while(cond): NEWLINE INDENT S
+S -> AssignExpr 
+S-> E
+S -> Sequence 
+S->  Decl 
+S -> break  
+S -> continue 
+S -> return
+S -> print(E)
+Sequence -> SS 
+Sequence -> epsilon
+cond -> expr 
+cond -> expr logOp expr
+expr -> relexp 
+expr -> logexp 
+expr -> E
+relexp -> E relOp E
+logexp -> E logOp E
+logOp -> || 
+logOp -> &&
+relOp -> < 
+relOp -> > 
+relOp -> <= 
+relOp -> >= 
+relOp -> != 
+relOp -> ==
+AssignExpr -> id = E
+E -> E + T 
+E -> T
+T -> T * F 
+T -> F
+F -> id 
+F -> num 
+F -> (E) 
+Decl -> id 
+Decl -> AssignExpr

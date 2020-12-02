@@ -1,0 +1,14 @@
+def p_error(p):
+    if p:
+        #print("Syntax error at line",lineCount)
+        #print(data)
+        print(action[0])
+    else:
+        #print("Syntax error at line",lineCount)
+        #print(data)
+        print(action[0])
+parser=yacc.yacc()
+with open("userProgram.py",'r') as f1:
+  for line in f1:
+    data=str(line)
+    result=parser.parse(data)

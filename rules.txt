@@ -1,0 +1,77 @@
+Program -> COMMENT Program``
+Program-> DEF SPACE ID Expression : Funcbody Program``
+Program-> DEF SPACE ID Expression ) : Funcbody Program`` Extra parenthesis to the right
+Program-> DEF SPACE ID Expression : Program `` Missing functional block
+Program->DEF SPACE ID  :  Program`` Missing  ()
+Program -> DEF SPACE ID Expression Funcbody `` Missing Colon
+Program->Statement``
+Program->Assignment``
+Program-> ``
+Funcbody -> TAB Assignment Funcbody``
+Funcbody-> TAB Condition Funcbody``
+Funcbody-> TAB Statement Funcbody``
+Funcbody-> TAB Loop Funcbody``
+Funcbody-> TAB RETURN Idnum Funcbody``
+Funcbody -> Assignment `` Indentation required
+Funcbody-> Condition `` Indentation required
+Funcbody-> Statement `` Indentation required
+Funcbody-> Loop `` Indentation required
+Funcbody-> RETURN SPACE Idnum `` Indentation required
+Funcbody-> ``
+Assignment -> ID SPACE = SPACE AssignmentExpression``
+Assignment -> ID SPACE == SPACE AssignmentExpression `` = expected
+AssignmentExpression -> NUMBER ``
+AssignmentExpression -> NUMBER SPACE Op SPACE NUMBER ``
+AssignmentExpression -> NUMBER SPACE Op SPACE ID ``
+AssignmentExpression -> ID ``
+AssignmentExpression -> ID SPACE Op SPACE ID ``
+Statement -> PRINT Expression ``
+Statement -> PRINT Expression :  `` Colon not required after )
+Statement -> PRINT (ID(Idnum))  ``
+Statement -> PRINT (ID(Idnum,Idnum))``
+Loop -> FOR SPACE ID SPACE IN SPACE RANGE  (  Idnum , Idnum ) : LoopBody``
+Loop -> FOR SPACE ID SPACE IN SPACE RANGE  (  Idnum , Idnum Op Idnum ) : LoopBody``
+Loop -> FOR SPACE ID SPACE IN SPACE RANGE  (  Idnum , Idnum Op Idnum )) : LoopBody`` extra parenthesis on the right
+Loop -> FOR SPACE ID SPACE IN SPACE RANGE ( Idnum , Idnum) LoopBody `` Missing colon
+Loop -> FOR SPACE ID SPACE IN SPACE RANGE  (  Idnum , Idnum Op Idnum )  LoopBody`` Missing colon
+LoopBody -> TAB AssignmentExpression ``
+LoopBodyc-> TAB Condition ``
+LoopBody -> AssignmentExpression `` Indentation Required
+Condition -> IF SPACE CondStmt : CondBody``
+Condition -> IF SPACE CondStmt `` Missing colon
+Condition -> ELIF SPACE CondStmt : CondBody``
+Condition -> ELIF SPACE CondStmt `` Missing colon
+Condition -> ELSE : CondBody``
+Condition -> ELSE `` Missing colon
+Condition -> IF ((Idnum Op Idnum relOp Idnum) logOp (Idnum Op Idnum relOp Idnum)): CondBody ``
+CondStmt -> ID SPACE relOp SPACE Idnum``
+CondBody -> TAB Statement``
+CondBody -> TAB RETURN Idnum``
+CondBody -> TAB Loop``
+CondBody->TAB Assignment CondBody ``
+CondBody-> Assignment CondBody`` Indentation required
+CondBody -> Statement`` Indentation required
+CondBody -> RETURN SPACE Idnum`` Indentation required
+CondBody -> Loop`` Indentation required
+CondBody-> ``
+Expression-> (Idnum, SPACE Idnum)``
+Expression-> (Idnum, Expression)``
+Expression->  ((Idnum, Expression)  `` Extra left parenthesis
+Expression ->  (Idnum, Expression))  `` Extra right parenthesis
+Expression-> ``
+Idnum-> ID``
+Idnum->NUMBER``
+relOp ->  ==  ``
+relOp ->  <=  ``
+relOp -> GREATERTHAN =  ``
+relOp ->  < ``
+relOp -> GREATERTHAN ``
+relOp ->  !=  ``
+Op ->  + ``
+Op -> MINUS ``
+Op ->  *  ``
+Op ->  /  ``
+Op -> % ``
+logOp -> AND ``
+logOp -> OR ``
+logOp -> NOT ``
